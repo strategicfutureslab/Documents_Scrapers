@@ -1,8 +1,11 @@
 # Documents Scrapers [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 ---
 
+This repository contains several scripts scraping document texts and metadata from various sources.
+
 ## List of Scrapers
-- [The Conversation](the_conversation)
+- [The Conversation](the_conversation): Scraps articles from the online newspaper [theconversation.com](https://theconversation.com/).
+- [Scottish Universities](scottish_universities): Scraps publication details from several scottish universities.
 
 ---
 This work is licensed under a [Creative Commons Attribution 4.0 International
