@@ -1,9 +1,14 @@
 # Documents Scrapers [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 ---
 
+## Scottish Universities Scrapers
+
+> Author: P. Le Bras<br>
+> Date: 25/06/2021
+
 Collection of scripts scraping Scottish universities' public repositories for publication data.
 
-## Heriot-Watt University
+### Heriot-Watt University
 
 Website: [researchportal.hw.ac.uk](https://researchportal.hw.ac.uk/)
 
@@ -25,7 +30,7 @@ Script: `scraper_hwu.py`
     - `title`, `authors`, `date`, `abstract`, `url` and `organisation` same as `hw_papers_raw.csv`;
     - `author_id` replaced by `author_ids`, the list of authors' unique ids (those with an entry in `hw_authors.csv`) concatenated with an ` & `.
 
-## University of Edinburgh
+### University of Edinburgh
 
 Website: [research.ed.ac.uk](https://www.research.ed.ac.uk/)
 
@@ -42,7 +47,7 @@ Script: `scraper_edi.py`
 - `merge_raw_papers()` merges all files in `edi_papers_raw` directory in one (`edi_papers_raw.csv`);
 - `clean_duplicates()` ditto to Heriot-Watt University, saved in `edi_papers.csv`
 
-## University of Glasgow
+### University of Glasgow
 
 Website: [eprints.gla.ac.uk](https://eprints.gla.ac.uk)
 
