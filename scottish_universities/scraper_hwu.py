@@ -37,12 +37,13 @@ def fetch_authors():
     for i in range(n_pages_auth):
         authors += fetch_authors_page(base_url_auth+str(i))
     print('Found %i profiles'%len(authors))
-    with open(auth_out, 'w') as outFile:
+    with open(auth_out, 'w', encoding='utf-8') as outFile:
         w = csv.DictWriter(outFile, authors[0].keys(), quoting=csv.QUOTE_ALL)
         w.writeheader()
         w.writerows(authors)
 
-# fetch_authors()
+
+
 
 ##################################################
 # Scraping Papers
@@ -133,17 +134,17 @@ def get_author_papers(auth_url, auth_id):
     return papers
 
 def fetch_papers():
-    with open(auth_out, 'r') as inFile:
+    with open(auth_out, 'r', encoding='utf-8') as inFile:
         author_urls = [(row['url'],row['id']) for row in csv.DictReader(inFile)]
         papers = []
         for a_u in author_urls:
             papers += get_author_papers(a_u[0], a_u[1])
-        with open(raw_papers_out, 'w') as outFile:
+        with open(raw_papers_out, 'w', encoding="utf-8") as outFile:
             w = csv.DictWriter(outFile, papers[0].keys(), quoting=csv.QUOTE_ALL)
             w.writeheader()
             w.writerows(papers)
 
-# fetch_papers()
+
 
 ##################################################
 # Eliminating duplicates
@@ -152,7 +153,7 @@ def fetch_papers():
 papers_out = 'data/hwu_papers.csv'
 
 def clean_duplicates():
-    with open(raw_papers_out, 'r') as inFile:
+    with open(raw_papers_out, 'r', encoding='utf-8') as inFile:
         papers = [{k:v for k,v in r.items()} for r in csv.DictReader(inFile)]
         print('%i papers originally'%len(papers))
         uniq_urls = {p['url'] for p in papers}
@@ -166,11 +167,16 @@ def clean_duplicates():
             paper.pop('author_id', None)
             uniq_papers += [paper]
         print('Found %i unique papers'%len(uniq_papers))
-        with open(papers_out, 'w') as outFile:
+        with open(papers_out, 'w', encoding="utf-8") as outFile:
             w = csv.DictWriter(outFile, uniq_papers[0].keys(), quoting=csv.QUOTE_ALL)
             w.writeheader()
             w.writerows(uniq_papers)
 
-# clean_duplicates()
 
-print('Time taken (s): ', (time.monotonic() - start_time))
+
+
+if __name__ == '__main__':
+    fetch_authors()
+    fetch_papers()
+    clean_duplicates()
+    print('Time taken (s): ', (time.monotonic() - start_time))

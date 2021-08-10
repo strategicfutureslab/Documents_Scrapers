@@ -42,7 +42,7 @@ def fetch_authors():
         w.writeheader()
         w.writerows(authors)
 
-# fetch_authors()
+fetch_authors()
 
 ##################################################
 # Scraping Papers
@@ -157,7 +157,7 @@ def fetch_papers():
             w.writerows(papers)
             papers = []
 
-# fetch_papers()
+fetch_papers()
 
 ##################################################
 # Merge raw papers
@@ -182,7 +182,7 @@ def merge_raw_papers():
         w.writeheader()
         w.writerows(papers)
 
-# merge_raw_papers()
+merge_raw_papers()
 
 ##################################################
 # Eliminating duplicates
@@ -210,6 +210,9 @@ def clean_duplicates():
             w.writeheader()
             w.writerows(uniq_papers)
 
-# clean_duplicates()
+clean_duplicates()
+
+
+
 
 print('Time taken (s): ', (time.monotonic() - start_time))
